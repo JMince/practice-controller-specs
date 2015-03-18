@@ -1,7 +1,6 @@
 class Book < ActiveRecord::Base
   validates :title, presence: true
 
-
   def self.find_for_title(title)
     Book.where(title: title)
   end
@@ -11,13 +10,13 @@ class Book < ActiveRecord::Base
   end
 
   def self.stringify_all_book_titles
+    Book.all.map(&:title).join(", ")
+
     # Book.all.map do |book|
     #   book.title
     # end.join(', ')
 
     # Book.all.map { |book| book.title }.join(", ")
-
-    Book.all.map(&:title).join(", ")
 
     # result = ""
     #
